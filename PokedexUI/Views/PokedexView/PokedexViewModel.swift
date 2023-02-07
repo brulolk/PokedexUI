@@ -10,16 +10,21 @@ import Combine
 class PokedexViewModel: ObservableObject {
     
     @Published var pokemons: [Pokemon] = []
-    private var ended: Bool = false
+    @Published var searchText = ""
+    var ended: Bool = false
     private var cancelable: Set<AnyCancellable> = []
+    
+    var filteredPokemons: [Pokemon] {
+        return searchText == "" ? pokemons : pokemons.filter { $0.name.contains(searchText.lowercased()) }
+    }
     
     //GET Method
     func getPokemons() {
         APIClient.dispatch(
-            APIRouter.GetPokemons(queryParams: APIParameters.PokemonParams(offset: pokemons.count, limit: 151)))
+            APIRouter.GetPokemons(queryParams: APIParameters.PokemonParams(offset: pokemons.count, limit: 1008)))
         .sink { _ in }
         receiveValue: { [weak self] pokemons in
-            self?.pokemons = pokemons.results
+            self?.pokemons += pokemons.results
             self?.ended = pokemons.next != nil
         }.store(in: &cancelable)
     }

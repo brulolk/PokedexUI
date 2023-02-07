@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159B650C2992C4AC00258B33 /* pokeball.gif in Resources */ = {isa = PBXBuildFile; fileRef = 159B650B2992C4AC00258B33 /* pokeball.gif */; };
+		159B650E2992C4CC00258B33 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159B650D2992C4CC00258B33 /* GifImage.swift */; };
 		15C545452991ABC20018306D /* PokemonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C545442991ABC20018306D /* PokemonCardView.swift */; };
 		15CA405A298ECB3F004CA4E3 /* PokedexUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4059298ECB3F004CA4E3 /* PokedexUIApp.swift */; };
 		15CA405E298ECB40004CA4E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15CA405D298ECB40004CA4E3 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		159B650B2992C4AC00258B33 /* pokeball.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pokeball.gif; sourceTree = "<group>"; };
+		159B650D2992C4CC00258B33 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		15C545442991ABC20018306D /* PokemonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardView.swift; sourceTree = "<group>"; };
 		15CA4056298ECB3F004CA4E3 /* PokedexUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CA4059298ECB3F004CA4E3 /* PokedexUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUIApp.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		15CA4068298EE06A004CA4E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				159B650B2992C4AC00258B33 /* pokeball.gif */,
 				15CA4075299134B6004CA4E3 /* Log.swift */,
 			);
 			path = Utilities;
@@ -124,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				15C545442991ABC20018306D /* PokemonCardView.swift */,
+				159B650D2992C4CC00258B33 /* GifImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159B650C2992C4AC00258B33 /* pokeball.gif in Resources */,
 				15CA4062298ECB40004CA4E3 /* Preview Assets.xcassets in Resources */,
 				15CA405E298ECB40004CA4E3 /* Assets.xcassets in Resources */,
 			);
@@ -233,6 +240,7 @@
 				15CA4072298EE186004CA4E3 /* APIConstants.swift in Sources */,
 				15CA4070298EE14F004CA4E3 /* APIRouter.swift in Sources */,
 				15CA405A298ECB3F004CA4E3 /* PokedexUIApp.swift in Sources */,
+				159B650E2992C4CC00258B33 /* GifImage.swift in Sources */,
 				15F1A0BE29916F680013EA74 /* PokemonViewModel.swift in Sources */,
 				15CA406E298EE10A004CA4E3 /* APIClient.swift in Sources */,
 				15F1A0BC29916F5A0013EA74 /* PokemonView.swift in Sources */,

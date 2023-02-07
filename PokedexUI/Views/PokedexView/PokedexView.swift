@@ -9,28 +9,32 @@ import SwiftUI
 
 struct PokedexView: View {
     
-    @StateObject var viewModel = PokedexViewModel()
+    @ObservedObject var viewModel = PokedexViewModel()
     
-    private let adaptiveColumns = [
-        GridItem(.flexible()), GridItem(.flexible())
-    ]
+    
+    var items: [GridItem] {
+        return Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+    }
     
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: adaptiveColumns, spacing: 20) {
-                    ForEach(viewModel.pokemons) { pokemon in
-                        NavigationLink(destination: PokemonView()
+                LazyVGrid(columns: items, spacing: 16) {
+                    ForEach(viewModel.filteredPokemons) { pokemon in
+                        NavigationLink(destination: PokemonView(pokemon: pokemon)
                         ) {
                             PokemonCardView(pokemon: pokemon, index: viewModel.getPokemonIndex(pokemon: pokemon))
+                            
                         }
                     }
-                }.padding(.all, 20)
+                }
+                .padding(.all, 20)
                 .navigationTitle("PokemonUI")
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.automatic)
             }
+            .searchable(text: $viewModel.searchText)
+            .disableAutocorrection(true)
         }
-        .environmentObject(viewModel)
         .onAppear {
             viewModel.getPokemons()
         }

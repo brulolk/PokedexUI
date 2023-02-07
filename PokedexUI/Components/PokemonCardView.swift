@@ -16,7 +16,7 @@ struct PokemonCardView: View {
         ZStack {
             VStack(alignment: .center) {
                 Text(pokemon.name.capitalized)
-                    .font(.title2).bold()
+                    .font(.title2).bold().dynamicTypeSize(.large)
                     .padding(.top, 10)
                     .foregroundColor(.white)
                 
@@ -25,12 +25,15 @@ struct PokemonCardView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 130, maxHeight: 130)
-                        .background(.thinMaterial)
+                        .background(
+                            .white
+                            .opacity(0.9)
+                        )
                         .clipShape(Circle())
-                        .unredacted()
                 } placeholder: {
-                    ProgressView()
+                    GifImage("pokeball")
                         .frame(width: 130, height: 130)
+                        .clipShape(Circle())
                 }
                 .padding(.all, 10)
             }
@@ -38,7 +41,7 @@ struct PokemonCardView: View {
         .cornerRadius(12)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.teal)
+                .fill(Color.red.gradient)
                 .shadow(color: .gray, radius: 6, x: -5, y: -5)
         )
     }
