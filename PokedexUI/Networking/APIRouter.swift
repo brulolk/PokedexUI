@@ -22,11 +22,11 @@ class APIRouter {
     
     struct GetPokemonDetail: Request {
         typealias ReturnType = PokemonDetail
-        var path: String = "/pokemon/"
+        var path: String = "pokemon/"
         var method: HTTPMethod = .get
         var queryParams: [String : Any]?
-        init(queryParams: APIParameters.PokemonDetailParams) {
-            self.queryParams = queryParams.asDictionary
+        init(name: String) {
+            self.path += name
         }
     }
 }

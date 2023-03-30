@@ -11,7 +11,6 @@ struct PokedexView: View {
     
     @ObservedObject var viewModel = PokedexViewModel()
     
-    
     var items: [GridItem] {
         return Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
@@ -19,25 +18,30 @@ struct PokedexView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: items, spacing: 16) {
-                    ForEach(viewModel.filteredPokemons) { pokemon in
-                        NavigationLink(destination: PokemonView(pokemon: pokemon)
-                        ) {
-                            PokemonCardView(pokemon: pokemon, index: viewModel.getPokemonIndex(pokemon: pokemon))
-                            
+                if viewModel.pokemons.isEmpty {
+                    Text("loading...")
+                } else {
+                    LazyVGrid(columns: items, spacing: 16) {
+                        ForEach( viewModel.filteredPokemons) { pokemon in
+                            NavigationLink(destination: PokemonView(pokemon: pokemon)
+                            ) {
+                                PokemonCardView(pokemon: pokemon, index: viewModel.getPokemonIndex(pokemon: pokemon))
+                                
+                            }
                         }
                     }
                 }
-                .padding(.all, 20)
-                .navigationTitle("PokemonUI")
-                .navigationBarTitleDisplayMode(.automatic)
             }
+            .padding(.all, 20)
+            .navigationTitle("PokedexUI")
+            .navigationBarTitleDisplayMode(.automatic)
             .searchable(text: $viewModel.searchText)
             .disableAutocorrection(true)
         }
         .onAppear {
             viewModel.getPokemons()
         }
+        .accentColor(.red)
     }
 }
 

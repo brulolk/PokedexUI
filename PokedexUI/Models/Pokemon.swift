@@ -18,28 +18,21 @@ struct Pokemon: Codable, Hashable, Identifiable {
     let id = UUID()
     let name: String
     let url: String
+    
+    static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
 }
 
 struct PokemonDetail: Codable {
     let id: Int
     let name: String
-    let locationAreaEncounters: String
-    let sprite: Sprite
-    let types: [PokeType]
+    let locationAreaEncounters: String?
+    let types: [PokeTypes]
     
-    struct PokeType: Codable {
-        let name: String
-    }
-    
-    struct Sprite: Codable {
-        let other: OtherSprites
+    struct PokeTypes: Codable {
+        let type: PokeType
         
-        struct OtherSprites: Codable {
-            let officialArtWork: OfficialArtwork
-            
-            struct OfficialArtwork: Codable {
-                let frontDefault: String
-            }
+        struct PokeType: Codable {
+            let name: String
         }
     }
 }

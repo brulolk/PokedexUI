@@ -19,8 +19,4 @@ struct APIParameters{
         var offset: Int?
         var limit: Int?
     }
-    
-    struct PokemonDetailParams: Encodable {
-        var name: String
-    }
 }
